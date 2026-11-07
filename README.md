@@ -2,7 +2,12 @@
 
 사이트: https://seosangryeong.github.io/academic_note/
 
-대학교·대학원 수업과 대회에서 한 프로젝트 기록을 한 사이트로 모은 저장소입니다. 왼쪽에는 프로젝트의 기록 목록, 오른쪽에는 프로젝트 목록이 있습니다. 연구실 연구 기록은 [Kaeri_note](https://github.com/seosangryeong/Kaeri_note)에 따로 있습니다.
+대학교·대학원 수업과 대회에서 한 프로젝트 기록을 한 사이트로 모은 저장소입니다.
+
+- 대학원: 과학기술연합대학원대학교(UST) 인공지능학과
+- 대학교: 한국기술교육대학교(KOREATECH) 메카트로닉스공학과 생산시스템
+
+왼쪽에는 프로젝트의 기록 목록, 오른쪽에는 프로젝트 목록이 있습니다.
 
 기록은 **Markdown**으로 쓰고, `build.py`가 HTML로 바꿉니다. push하면 GitHub Actions가 빌드해서 배포합니다. `_site/`는 커밋하지 않습니다.
 
