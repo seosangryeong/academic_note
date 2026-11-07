@@ -52,6 +52,8 @@ EXTENSIONS = ['tables', 'attr_list', 'admonition', 'fenced_code', 'sane_lists', 
 PROJECTS = [
     {'slug': 'llm-robot', 'name': 'LLM 기반 로봇제어 (수업)',
      'period': '2025.09 – 2025.12 · 대학원 2학년 2학기'},
+    {'slug': 'plc', 'name': '유공압·PLC 실습 (수업)',
+     'period': '2018.09 – 2021.06', 'collection': True},
     {'slug': 'rbiz', 'name': 'R-BIZ 챌린지 로버',
      'period': '2023.03 – 2023.10'},
 ]
@@ -189,7 +191,9 @@ def load(project):
 def build_project(project, folder, notes):
     out = OUT / project['slug']
     (out / 'assets').mkdir(parents=True)
-    for asset in (folder / 'assets').iterdir():
+    # A project without pictures may have no assets/ folder (git keeps no empty folders).
+    assets = folder / 'assets'
+    for asset in (assets.iterdir() if assets.is_dir() else []):
         if asset.is_file():
             shutil.copy(asset, out / 'assets' / asset.name)
     for name, meta, text in notes:

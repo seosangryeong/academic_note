@@ -11,6 +11,11 @@
 
 - [거대언어모델기반 로봇제어 이론 및 실습](llm-robot/index.html) · {{period:llm-robot}}
 
+## 대학교
+
+- [유공압실습](plc/index.html) · 2018년 2학기
+- [PLC실습](plc/01-plc.html) · 2021년 1학기
+
 ## 대회
 
 - [R-BIZ 챌린지 우주 탐사 로버](rbiz/index.html) · {{period:rbiz}}
