@@ -16,7 +16,7 @@
 
 ## 대학교 수업
 
-- [캡스톤디자인 (졸업작품): 테니스공 수거 로봇](undergrad/index.html) · 2022.09 – 2023.11 · 학부 졸업설계 1위
+- [캡스톤디자인 (졸업작품): 테니스공 수거 로봇](undergrad/index.html) · 2022.09 – 2023.11 · 생산시스템 전공 졸업작품 1위
 - [생산계획 및 관리](undergrad/01-production.html) · 2023년 1학기
 - [PLC실습](undergrad/02-plc.html) · 2021년 1학기
 - [유공압실습](undergrad/03-pneumatics.html) · 2018년 2학기
