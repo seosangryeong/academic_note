@@ -11,12 +11,11 @@
 
 기록은 **Markdown**으로 쓰고, `build.py`가 HTML로 바꿉니다. push하면 GitHub Actions가 빌드해서 배포합니다. `_site/`는 커밋하지 않습니다.
 
-| 프로젝트 | 폴더 |
-| --- | --- |
-| 거대언어모델기반 로봇제어 이론 및 실습 (대학원 수업) | `projects/llm-robot/` |
-| 생산계획 및 관리 (대학교 수업) | `projects/production/` |
-| 유공압실습, PLC실습 (대학교 수업) | `projects/plc/` |
-| R-BIZ 챌린지 우주 탐사 로버 | `projects/rbiz/` |
+| 구분 | 폴더 | 내용 |
+| --- | --- | --- |
+| 대학원 수업 | `projects/grad/` | 거대언어모델기반 로봇제어 이론 및 실습 |
+| 대학교 수업 | `projects/undergrad/` | 생산계획 및 관리, PLC실습, 유공압실습 |
+| 대회 | `projects/contest/` | R-BIZ 챌린지 우주 탐사 로버 |
 
 ## 미리 보기
 
@@ -27,9 +26,9 @@ python3 -m http.server -d _site 8080           # http://localhost:8080
 
 ## 기록 쓰기
 
-- 프로젝트마다 `notes/`에 기록(`00-index.md`가 개요, 나머지는 파일 이름 순서), `assets/`에 사진을 둡니다.
 - 기록 맨 위에 `title`, `nav`(왼쪽 목록 이름), `date`를 적습니다. 쓸 수 있는 상자(`!!! summary`, `!!! issue`, `??? 원리` 등)는 `build.py` 위쪽 설명과 기존 기록을 참고하세요.
-- 새 프로젝트는 `projects/<이름>/notes`, `projects/<이름>/assets`를 만들고 `build.py`의 `PROJECTS`와 `home.md` 목록에 한 줄씩 추가합니다.
+- 새 수업이나 대회는 해당 구분 폴더(`grad`, `undergrad`, `contest`)의 `notes/`에 기록 파일을 하나 추가하고 사진은 같은 폴더의 `assets/`에 넣은 뒤, `home.md` 목록에 한 줄 추가합니다. 왼쪽 목록 순서는 파일 이름 순서이고, `00-index.md`가 그 구분의 첫 페이지입니다.
+- 구분 자체를 새로 만들 때만 `build.py`의 `PROJECTS`에 한 줄 추가합니다.
 
 ## 구성
 

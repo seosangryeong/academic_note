@@ -70,6 +70,9 @@ h1 { font-size: 32px; line-height: 1.3; letter-spacing: -0.02em; margin: 0; }
 
 /* ---------- body text ---------- */
 h2 { font-size: 23px; line-height: 1.4; margin: 40px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+
+/* a second project on the same page (e.g. midterm and final of one course) */
+h2.part { margin-top: 88px; padding-top: 28px; border-top: 3px solid var(--line); }
 h3 { font-size: 19px; line-height: 1.45; margin: 26px 0 8px; }
 h4 { font-size: 17px; margin: 20px 0 6px; }
 p { margin: 0 0 14px; }

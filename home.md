@@ -7,16 +7,16 @@
 
 대학교와 대학원 수업, 대회에서 한 프로젝트 기록을 모았다.
 
-## 대학원
+## 대학원 수업
 
-- [거대언어모델기반 로봇제어 이론 및 실습](llm-robot/index.html) · {{period:llm-robot}}
+- [거대언어모델기반 로봇제어 이론 및 실습](grad/index.html) · 2025.09 – 2025.12
 
-## 대학교
+## 대학교 수업
 
-- [생산계획 및 관리](production/index.html) · {{period:production}}
-- [유공압실습](plc/index.html) · 2018년 2학기
-- [PLC실습](plc/01-plc.html) · 2021년 1학기
+- [생산계획 및 관리](undergrad/index.html) · 2023년 1학기
+- [PLC실습](undergrad/01-plc.html) · 2021년 1학기
+- [유공압실습](undergrad/02-pneumatics.html) · 2018년 2학기
 
 ## 대회
 
-- [R-BIZ 챌린지 우주 탐사 로버](rbiz/index.html) · {{period:rbiz}}
+- [R-BIZ 챌린지 우주 탐사 로버](contest/index.html) · 2023.03 – 2023.10
