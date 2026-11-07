@@ -50,6 +50,8 @@ EXTENSIONS = ['tables', 'attr_list', 'admonition', 'fenced_code', 'sane_lists', 
 # slug = folder under projects/ and on the site, period = shown on the home page and the
 # project's overview page here (replaces the date written in the project's 00-index.md).
 PROJECTS = [
+    {'slug': 'llm-robot', 'name': 'LLM 기반 로봇제어 (수업)',
+     'period': '2025.09 – 2025.12 · 대학원 2학년 2학기'},
     {'slug': 'rbiz', 'name': 'R-BIZ 챌린지 로버',
      'period': '2023.03 – 2023.10'},
 ]
@@ -206,7 +208,7 @@ def build_project(project, folder, notes):
 def home():
     """Home page: research overview written in home.md. {{period:slug}} -> the project's period."""
     periods = {p['slug']: p['period'] for p in PROJECTS}
-    text = re.sub(r'\{\{period:(\w+)\}\}', lambda m: periods[m.group(1)],
+    text = re.sub(r'\{\{period:([\w-]+)\}\}', lambda m: periods[m.group(1)],
                   (ROOT / 'home.md').read_text(encoding='utf-8'))
     return page(title=SITE_TITLE, description='대학교·대학원 수업과 대회에서 한 프로젝트 기록.',
                 body=polish(render(text)), left='', current=None, up='')
