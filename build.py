@@ -1,18 +1,34 @@
 #!/usr/bin/env python3
 """Build one site that holds every project's notes.
 
-    python3 build.py                  # reads ../rbiz_challenge_note, ... (sibling folders)
-    python3 build.py --src sources    # reads sources/rbiz_challenge_note, ... (used by GitHub Actions)
+    python3 build.py
     python3 -m http.server -d _site 8080
 
-The notes themselves live in each project's own repository (notes/*.md, assets/).
-This site only copies them: the home page is home.md (overview), each project gets
-its own folder (rbiz/, ...), the note list stays on the left and the
-project list sits on the right.
+Each project's notes live in projects/<slug>/notes/*.md, its pictures in projects/<slug>/assets/.
+The home page is home.md, each project gets its own folder on the site (projects/fr3 -> fr3/),
+the note list stays on the left and the project list sits on the right.
+
+Each note starts with a small header:
+
+    ---
+    title: 자성체 탐지
+    nav: 자성체 탐지                 (sidebar label, optional)
+    date: 기록 2                     (shown above the title)
+    ---
+
+Besides normal Markdown (tables, lists, code), notes can use:
+
+    !!! summary "한 줄 요약"          coloured box
+    !!! issue "제목"                 problem / cause / fix card (consecutive
+        **문제** ...                 cards are laid out side by side)
+    !!! lesson "배운 점"             outlined box
+    ??? 원리: 제목                    fold-out explanation, closed by default
+        (indented Markdown)
+
+Pages are ordered by file name. 00-index.md becomes index.html.
 """
 from html import escape
 from pathlib import Path
-import argparse
 import hashlib
 import re
 import shutil
@@ -31,15 +47,15 @@ CSS_VERSION = hashlib.md5((ROOT / 'styles.css').read_bytes()).hexdigest()[:8]
 EXTENSIONS = ['tables', 'attr_list', 'admonition', 'fenced_code', 'sane_lists', 'toc']
 
 # Order in the right-hand list (most recent first).
-# slug = folder on this site, repo = GitHub repository, period = shown on the home page and the
+# slug = folder under projects/ and on the site, period = shown on the home page and the
 # project's overview page here (replaces the date written in the project's 00-index.md).
 PROJECTS = [
-    {'slug': 'rbiz', 'repo': 'rbiz_challenge_note', 'dir': 'rbiz_challenge_note', 'name': 'R-BIZ 챌린지 로버',
+    {'slug': 'rbiz', 'name': 'R-BIZ 챌린지 로버',
      'period': '2023.03 – 2023.10'},
 ]
 
 
-# ---------- Markdown (same rules as each project's build.py) ----------
+# ---------- Markdown ----------
 
 def render(text):
     return markdown.markdown(text, extensions=EXTENSIONS)
@@ -157,8 +173,8 @@ def left_nav(notes, name):
 
 # ---------- build ----------
 
-def load(project, src):
-    folder = src / project['dir']
+def load(project):
+    folder = ROOT / 'projects' / project['slug']
     if not (folder / 'notes').is_dir():
         raise SystemExit(f'notes not found: {folder}/notes')
     notes = []
@@ -197,12 +213,7 @@ def home():
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--src', default=str(ROOT.parent),
-                        help='folder that holds rbiz_challenge_note/, ... (default: parent folder)')
-    src = Path(parser.parse_args().src).resolve()
-
-    loaded = [(p, load(p, src)) for p in PROJECTS]
+    loaded = [(p, load(p)) for p in PROJECTS]
     if OUT.exists():
         shutil.rmtree(OUT)
     (OUT / 'assets').mkdir(parents=True)
