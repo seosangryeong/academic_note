@@ -14,6 +14,7 @@
 | 프로젝트 | 폴더 |
 | --- | --- |
 | 거대언어모델기반 로봇제어 이론 및 실습 (대학원 수업) | `projects/llm-robot/` |
+| 생산계획 및 관리 (대학교 수업) | `projects/production/` |
 | 유공압실습, PLC실습 (대학교 수업) | `projects/plc/` |
 | R-BIZ 챌린지 우주 탐사 로버 | `projects/rbiz/` |
 

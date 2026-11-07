@@ -13,6 +13,7 @@
 
 ## 대학교
 
+- [생산계획 및 관리](production/index.html) · {{period:production}}
 - [유공압실습](plc/index.html) · 2018년 2학기
 - [PLC실습](plc/01-plc.html) · 2021년 1학기
 
