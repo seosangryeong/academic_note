@@ -50,7 +50,7 @@ EXTENSIONS = ['tables', 'attr_list', 'admonition', 'fenced_code', 'sane_lists', 
 # slug = folder under projects/ and on the site, period = shown on the home page and the
 # project's overview page here (replaces the date written in the project's 00-index.md).
 PROJECTS = [
-    {'slug': 'grad', 'name': '대학원 수업', 'period': '2025', 'collection': True},
+    {'slug': 'grad', 'name': '대학원 수업', 'period': '2024 – 2025', 'collection': True},
     {'slug': 'undergrad', 'name': '대학교 수업', 'period': '2018 – 2023', 'collection': True},
     {'slug': 'contest', 'name': '대회', 'period': '2023', 'collection': True},
 ]
