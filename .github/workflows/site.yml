@@ -1,0 +1,53 @@
+name: Deploy academic notes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 18 * * *'   # daily 03:00 KST: pick up new notes from the project repos
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6
+        with: { repository: seosangryeong/rbiz_challenge_note, path: sources/rbiz_challenge_note }
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build and check
+        run: |
+          pip install markdown==3.7
+          python3 build.py --src sources
+          python3 check_site.py
+          touch _site/.nojekyll
+      - uses: actions/upload-pages-artifact@v4
+        if: github.event_name != 'pull_request'
+        with:
+          path: _site
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,168 @@
+/* Academic project notes: white page, note list on the left, project list on the right. */
+:root {
+  --text: #1b1e21;
+  --muted: #5f6872;
+  --line: #e5e7ea;
+  --soft: #f5f6f7;
+  --accent: #1d5fa8;
+  --accent-soft: #eef4fb;
+  --sidebar: 236px;
+  --rail: 210px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 72px; }
+body {
+  margin: 0; background: #fff; color: var(--text);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+  font-size: 17px; line-height: 1.75;
+  word-break: keep-all; overflow-wrap: break-word;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+/* ---------- header ---------- */
+.site-header { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid var(--line); }
+.site-header .inner { padding: 12px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { font-weight: 700; font-size: 18px; color: var(--text); }
+.brand:hover { text-decoration: none; }
+.header-link { font-size: 15px; color: var(--muted); }
+
+/* ---------- layout ---------- */
+.layout { display: grid; grid-template-columns: var(--sidebar) minmax(0, 1fr) var(--rail); }
+.layout.no-left { grid-template-columns: minmax(0, 1fr) var(--rail); }
+.sidebar { border-right: 1px solid var(--line); padding: 24px 16px; }
+.sidebar .sticky { position: sticky; top: 76px; }
+.side summary { display: none; }
+.side ol { list-style: none; margin: 0; padding: 0; }
+.side li { margin: 0 0 2px; }
+.side a { display: block; padding: 7px 10px; border-radius: 6px; color: var(--text); font-size: 15px; line-height: 1.45; }
+.side a:hover { background: var(--soft); text-decoration: none; }
+.side a .when { display: block; font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+.side a.current { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.side a.current .when { color: var(--accent); opacity: .8; }
+
+.content { padding: 32px 48px 64px; max-width: 1180px; min-width: 0; }
+
+/* ---------- project list (right) ---------- */
+.projects { border-left: 1px solid var(--line); padding: 24px 16px; }
+.projects .sticky { position: sticky; top: 76px; }
+.projects-title { font-size: 13px; font-weight: 600; color: var(--muted); margin: 0 0 6px; padding: 0 10px; }
+.projects ol, .project-strip ol { list-style: none; margin: 0; padding: 0; }
+.projects li { margin: 0 0 2px; }
+.projects a { display: block; padding: 7px 10px; border-radius: 6px; color: var(--text); font-size: 15px; line-height: 1.45; }
+.projects a:hover, .project-strip a:hover { background: var(--soft); text-decoration: none; }
+.projects a.current, .project-strip a.current { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+
+/* the same list as a row under the header, used when the right column is hidden */
+.project-strip { display: none; border-top: 1px solid var(--line); overflow-x: auto; }
+.project-strip ol { display: flex; gap: 4px; padding: 6px 24px; }
+.project-strip li { margin: 0; flex: none; }
+.project-strip a { display: block; padding: 4px 10px; border-radius: 6px; color: var(--text); font-size: 14.5px; white-space: nowrap; }
+
+/* ---------- note head ---------- */
+.note-head { margin-bottom: 20px; }
+.note-head .meta { font-size: 14px; color: var(--muted); margin: 0 0 4px; }
+h1 { font-size: 32px; line-height: 1.3; letter-spacing: -0.02em; margin: 0; }
+
+/* ---------- body text ---------- */
+h2 { font-size: 23px; line-height: 1.4; margin: 40px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+h3 { font-size: 19px; line-height: 1.45; margin: 26px 0 8px; }
+h4 { font-size: 17px; margin: 20px 0 6px; }
+p { margin: 0 0 14px; }
+ul, ol { margin: 0 0 14px; padding-left: 1.4em; }
+li { margin: 4px 0; }
+li > ul, li > ol { margin: 4px 0 0; }
+strong { font-weight: 700; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.86em; background: var(--soft); padding: 1px 5px; border-radius: 4px; }
+pre { background: var(--soft); border-radius: 8px; padding: 12px 16px; overflow-x: auto; font-size: 14.5px; line-height: 1.6; margin: 0 0 16px; }
+pre code { background: none; padding: 0; }
+
+/* ---------- images ---------- */
+.content img { display: block; max-width: 100%; height: auto; margin: 8px 0 6px; border: 1px solid var(--line); border-radius: 8px; }
+.content img + em, .content p > em:only-child { color: var(--muted); font-size: 14px; }
+
+/* photo rows on the home page: every photo the same height, width follows its own shape */
+.gallery { display: flex; flex-wrap: wrap; gap: 12px; margin: 8px 0 14px; }
+.gallery figure { margin: 0; width: min-content; }
+.gallery img { height: 200px; width: auto; max-width: none; margin: 0; }
+.gallery figcaption { font-size: 14px; color: var(--muted); line-height: 1.5; margin-top: 4px; }
+.gallery .credit { font-size: 12px; }
+
+/* ---------- tables ---------- */
+.table-wrap { overflow-x: auto; margin: 8px 0 18px; }
+table { border-collapse: collapse; width: 100%; font-size: 15.5px; line-height: 1.6; }
+th, td { text-align: left; vertical-align: top; padding: 8px 12px; border-bottom: 1px solid var(--line); }
+thead th { font-weight: 600; color: var(--muted); background: var(--soft); white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+td:first-child { white-space: nowrap; }
+
+/* ---------- boxes (Markdown "!!! type" blocks) ---------- */
+.admonition { border-radius: 8px; padding: 14px 18px; margin: 0 0 18px; background: var(--soft); }
+.admonition > :last-child { margin-bottom: 0; }
+.admonition-title { font-weight: 700; margin: 0 0 4px; }
+.admonition.summary { background: var(--accent-soft); }
+.admonition.summary .admonition-title { color: var(--accent); font-size: 14px; }
+.admonition.lesson { background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--accent); }
+
+/* problem / cause / fix cards, laid out in a grid */
+.issues { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 16px; margin: 6px 0 24px; }
+.admonition.issue { background: #fff; border: 1px solid var(--line); margin: 0; padding: 20px 24px 18px; }
+.admonition.issue .admonition-title { font-size: 16.5px; padding-bottom: 12px; margin-bottom: 14px; border-bottom: 1px solid var(--line); }
+.admonition.issue p { margin: 0 0 12px; font-size: 15.5px; line-height: 1.7; padding-left: 52px; }
+.admonition.issue p:last-child { margin-bottom: 0; }
+.admonition.issue p.admonition-title { padding-left: 0; }
+.admonition.issue p > strong:first-child { display: inline-block; width: 52px; margin-left: -52px; color: var(--muted); font-size: 14px; }
+
+/* fold-out explanations */
+details.explain { border: 1px solid var(--line); border-radius: 8px; margin: 0 0 12px; background: #fff; }
+details.explain > summary { cursor: pointer; padding: 12px 18px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+details.explain > summary::-webkit-details-marker { display: none; }
+details.explain > summary::after { content: "펼치기 +"; font-weight: 500; font-size: 14px; color: var(--muted); white-space: nowrap; }
+details.explain[open] > summary::after { content: "접기 −"; }
+details.explain[open] > summary { border-bottom: 1px solid var(--line); }
+details.explain > .body { padding: 14px 18px 6px; }
+
+/* ---------- footer ---------- */
+.site-footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; padding: 18px 32px 28px; }
+
+/* ---------- narrow screens ---------- */
+@media (max-width: 1200px) {
+  .layout { grid-template-columns: var(--sidebar) minmax(0, 1fr); }
+  .layout.no-left { grid-template-columns: minmax(0, 1fr); }
+  .projects { display: none; }
+  .project-strip { display: block; }
+}
+@media (max-width: 900px) {
+  .layout, .layout.no-left { grid-template-columns: minmax(0, 1fr); }
+  .sidebar { border-right: 0; border-bottom: 1px solid var(--line); padding: 8px 16px; }
+  .sidebar .sticky { position: static; }
+  .side summary { display: block; cursor: pointer; font-weight: 600; padding: 8px 4px; }
+  .content { padding: 24px 20px 48px; }
+  .issues { grid-template-columns: 1fr; }
+  .admonition.issue { padding: 18px 18px 16px; }
+}
+@media (max-width: 600px) {
+  body { font-size: 16.5px; }
+  .site-header { position: static; }
+  .site-header .inner { padding: 12px 16px; }
+  .gallery figure { width: 100%; }
+  .gallery img { width: 100%; height: auto; }
+  .project-strip ol { padding: 6px 12px; }
+  .content { padding: 20px 16px 40px; }
+  h1 { font-size: 26px; }
+  h2 { font-size: 21px; }
+  table { font-size: 14.5px; }
+  th, td { padding: 7px 8px; }
+  td:first-child { white-space: normal; }
+  .site-footer { padding: 16px; }
+}
+@media print {
+  .site-header, .sidebar, .projects { display: none; }
+  .layout { display: block; }
+  details.explain > .body { display: block; }
+}
