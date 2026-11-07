@@ -11,6 +11,6 @@
 
 - [거대언어모델기반 로봇제어 이론 및 실습](llm-robot/index.html) · {{period:llm-robot}}
 
-## 대학교
+## 대회
 
 - [R-BIZ 챌린지 우주 탐사 로버](rbiz/index.html) · {{period:rbiz}}
