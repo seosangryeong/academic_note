@@ -60,7 +60,7 @@ description: 2023 R-BIZ 우주 탐사·개발 로봇 챌린지에 참가한 로�
 
 | 항목 | 내용 |
 |---|---|
-| 메인 컨트롤러 | NVIDIA Jetson AGX Xavier (ROS 2) |
+| 메인 컨트롤러 | NVIDIA Jetson AGX Xavier (ROS1) |
 | 센서 보드 | LOLIN D32 (ESP32), 지자기 센서 측정 후 유선으로 Xavier에 전달 |
 | 구동부 | 로커 구조, 가운데 차동 기어, 큰 바퀴 |
 | 제작 | 3D 프린팅(구동부 지지대, 결합 부품) |
